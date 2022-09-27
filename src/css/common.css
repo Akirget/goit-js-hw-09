@@ -29,3 +29,31 @@ button {
 button:hover {
   background-color: aliceblue;
 }
+
+input {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+span {
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+}
+
+.timer {
+  display: flex;
+  gap: 5px;
+}
+
+.field {
+  padding-right: 10px;
+}
+
+.value {
+  display: flex;
+  justify-content: center;
+  font-size: 28;
+}
