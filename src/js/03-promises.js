@@ -1,7 +1,7 @@
 import Notiflix from 'notiflix';
 
 const formEl = document.querySelector('.form');
-console.log(formEl);
+console.log();
 let delay = null;
 let step = null;
 let amount = null;
@@ -24,17 +24,22 @@ function createPromise(position, delay) {
 function onFormElCreatePromise(event) {
   event.preventDefault();
 
-  delay = event.currentTarget.delay.value;
-  amount = event.currentTarget.amount.value;
-  step = event.currentTarget.step.value;
+  delay = Number(event.currentTarget.delay.value);
+  amount = Number(event.currentTarget.amount.value);
+  step = Number(event.currentTarget.step.value);
+  console.log(amount);
 
-  for (let position = 1; position <= amount; position += 1) {
-    createPromise(position, delay)
+  for (let i = 1; i <= amount; i += 1) {
+    createPromise(i, delay)
       .then(({ position, delay }) => {
-        Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        Notiflix.Notify.success(
+          `✅ Fulfilled promise ${position} in ${delay}ms`
+        );
       })
       .catch(({ position, delay }) => {
-        Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+        Notiflix.Notify.failure(
+          `❌ Rejected promise ${position} in ${delay}ms`
+        );
       });
     delay += step;
   }
