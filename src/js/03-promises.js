@@ -6,7 +6,7 @@ let delay = null;
 let step = null;
 let amount = null;
 
-formEl.addEventListener('submit', onFormElCreatePromise);
+formEl.addEventListener('submit', onFormElPromise);
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
@@ -21,13 +21,12 @@ function createPromise(position, delay) {
   });
 }
 
-function onFormElCreatePromise(event) {
+function onFormElPromise(event) {
   event.preventDefault();
 
   delay = Number(event.currentTarget.delay.value);
   amount = Number(event.currentTarget.amount.value);
   step = Number(event.currentTarget.step.value);
-  console.log(amount);
 
   for (let i = 1; i <= amount; i += 1) {
     createPromise(i, delay)
