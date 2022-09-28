@@ -43,23 +43,12 @@ const options = {
       localStorage.setItem('selectedData', selectedDates[0]);
       const selectData = new Date(localStorage.getItem('selectedData'));
 
-      if (!selectData) return;
-
-      const diff = selectData - now;
-      const { days, hours, minutes, seconds } = convertMs(diff);
-      daysRef.textContent = days;
+      const difference = selectData - now;
+      const { days, hours, minutes, seconds } = convertMs(difference);
+      daysRef.textContent = addTime(days);
       hoursRef.textContent = addTime(hours);
       minutesRef.textContent = addTime(minutes);
       secondsRef.textContent = addTime(seconds);
-
-      if (
-        daysRef.textContent === '0' &&
-        hoursRef.textContent === '00' &&
-        minutesRef.textContent === '00' &&
-        secondsRef.textContent === '00'
-      ) {
-        clearInterval(timeId);
-      }
     };
 
     const onClick = () => {
@@ -74,4 +63,4 @@ const options = {
   },
 };
 
-flatpickr('#datetime-picker', { ...options });
+flatpickr('#datetime-picker', options);
